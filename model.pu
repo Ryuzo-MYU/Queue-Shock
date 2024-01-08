@@ -3,11 +3,36 @@
 ' 多分これ見れば導入できる↓
 ' https://qiita.com/Charotarou/items/10bd47c68a1190061858
 
-@startuml アンケート配布
+@startuml アンケート
 先生 --> アンケート : 作成
 アンケート --> 児童 : 配布
 アンケート --> テーブル : テーブル生成
 児童 --> アンケート : 回答
+@enduml
+
+@startuml アンケート回答
+left to right direction
+
+class Student{
+    id : int
+    name : string
+    GetId() : int
+    SetId(int id) : void
+    GetName() : string
+    SetName(string name) : void
+}
+class Answer{
+    student : Student
+    answer1 : int
+    answer2 : int
+}
+class Question{
+    question1 : int
+    question2 : int
+}
+
+Student "1" -- "*" Answer
+Answer "*" -- "1" Question
 @enduml
 
 @startuml 苦手な食べ物マッチング
